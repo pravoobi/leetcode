@@ -46,3 +46,40 @@ Input: nums = [-7,-3,2,3,11]
 Output: [4,9,9,49,121]
  
 */
+//best space
+var sortedSquares = function(nums) {
+    let left = 0;
+    let right = nums.length - 1;
+    let answer = [];
+    let idx = right;
+    
+    
+    while(left <= right) {
+        if(Math.abs(nums[left]) > Math.abs(nums[right])) {
+            answer[idx--] = nums[left] * nums[left];
+            left++;
+        } else {
+            answer[idx--] = nums[right] * nums[right];
+            right--;
+        }
+    }
+    
+    return answer;
+};
+//best fast
+var sortedSquares = function(nums) {
+    let i=0;
+    let j=nums.length-1;
+    let k=j;
+    let result = [];
+    while (i<=j) {
+        if (Math.abs(nums[i]) > Math.abs(nums[j])) {
+            result[k--] = nums[i] * nums[i];
+            i++;
+        } else {
+            result[k--] = nums[j] * nums[j];
+            j--;
+        }
+    }
+    return result;
+};
